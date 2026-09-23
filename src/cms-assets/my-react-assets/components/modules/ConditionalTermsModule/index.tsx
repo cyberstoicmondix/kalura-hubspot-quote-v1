@@ -1,13 +1,13 @@
-import { RichTextFieldWrapper } from '@hubspot/cms-components';
-import type { QuoteTemplateContext } from '@hubspot/quote-dev-sdk';
+import { RichTextFieldWrapper } from "@hubspot/cms-components";
+import type { QuoteTemplateContext } from "@hubspot/quote-dev-sdk";
 
-import { SECTIONS, type Clause } from './termsData';
-import type { FieldValues } from './fields';
+import { SECTIONS, type Clause } from "./termsData";
+import type { FieldValues } from "./fields";
 
-export { fields } from './fields';
+export { fields } from "./fields";
 
 interface HublData {
-  lineItems: QuoteTemplateContext['lineItems'];
+  lineItems: QuoteTemplateContext["lineItems"];
   isQuoteBlueprint: boolean;
 }
 
@@ -18,8 +18,8 @@ interface Props {
 
 function ClauseItem({ clause }: { clause: Clause }) {
   return (
-    <div style={{ marginBottom: 'calc(var(--spacing-unit) * 1.5)' }}>
-      <h4 style={{ margin: '0 0 calc(var(--spacing-unit) * 0.5) 0' }}>
+    <div style={{ marginBottom: "calc(var(--spacing-unit) * 1.5)" }}>
+      <h4 style={{ margin: "0 0 calc(var(--spacing-unit) * 0.5) 0" }}>
         {clause.title}
       </h4>
       <p style={{ margin: 0 }}>{clause.body}</p>
@@ -27,15 +27,21 @@ function ClauseItem({ clause }: { clause: Clause }) {
   );
 }
 
-function SectionBlock({ label, clauses }: { label: string; clauses: Clause[] }) {
+function SectionBlock({
+  label,
+  clauses,
+}: {
+  label: string;
+  clauses: Clause[];
+}) {
   return (
-    <section style={{ marginBottom: 'calc(var(--spacing-unit) * 3)' }}>
+    <section style={{ marginBottom: "calc(var(--spacing-unit) * 3)" }}>
       <h3
         style={{
-          margin: '0 0 calc(var(--spacing-unit) * 1.5) 0',
-          paddingBottom: 'calc(var(--spacing-unit) * 0.5)',
-          borderBottom: '1px solid currentColor',
-          fontSize: '1.15em',
+          margin: "0 0 calc(var(--spacing-unit) * 1.5) 0",
+          paddingBottom: "calc(var(--spacing-unit) * 0.5)",
+          borderBottom: "1px solid currentColor",
+          fontSize: "1.15em",
         }}
       >
         {label}
@@ -52,7 +58,8 @@ export function Component({ fieldValues, hublData }: Props) {
   const items = lineItems ?? [];
 
   const showAll = isQuoteBlueprint;
-  const showOneTime = showAll || items.some((i) => !i.recurringbillingfrequency);
+  const showOneTime =
+    showAll || items.some((i) => !i.recurringbillingfrequency);
   const showSubscriptions =
     showAll || items.some((i) => Boolean(i.recurringbillingfrequency));
   const showDelayedStartDate =
@@ -69,11 +76,11 @@ export function Component({ fieldValues, hublData }: Props) {
     <div
       style={{
         backgroundColor: fieldValues.styles?.backgroundColor?.css,
-        padding: 'calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4)',
+        padding: "calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4)",
         lineHeight: 1.55,
       }}
     >
-      <h2 style={{ margin: '0 0 calc(var(--spacing-unit) * 2) 0' }}>
+      <h2 style={{ margin: "0 0 calc(var(--spacing-unit) * 2) 0" }}>
         {fieldValues.heading}
       </h2>
 
@@ -81,7 +88,7 @@ export function Component({ fieldValues, hublData }: Props) {
         <RichTextFieldWrapper
           tag="div"
           fieldValue={fieldValues.intro}
-          style={{ marginBottom: 'calc(var(--spacing-unit) * 3)' }}
+          style={{ marginBottom: "calc(var(--spacing-unit) * 3)" }}
         />
       ) : null}
 
@@ -97,8 +104,8 @@ export function Component({ fieldValues, hublData }: Props) {
 }
 
 export const meta = {
-  label: 'Conditional Terms',
-  content_types: ['QUOTE', 'QUOTE_BLUEPRINT'],
+  label: "Conditional Terms",
+  content_types: ["QUOTE", "QUOTE_BLUEPRINT"],
 };
 
 export const hublDataTemplate = `

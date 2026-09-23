@@ -1,4 +1,5 @@
 ## Overview
+
 <!-- A brief summary of what this PR does and why. -->
 
 ## Related Links
@@ -20,9 +21,11 @@ Please share a brief description of your change, as well as the motivation behin
 -->
 
 ## Screenshots
+
 <!-- Include before and after screenshots, if applicable. -->
-| Before | After |
-| :-: | :-: |
+
+|   Before   |   After    |
+| :--------: | :--------: |
 | screenshot | screenshot |
 
 <!--

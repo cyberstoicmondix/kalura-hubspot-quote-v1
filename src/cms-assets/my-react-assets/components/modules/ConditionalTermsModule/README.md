@@ -19,11 +19,11 @@ Sections live as keyed entries on the `SECTIONS` object in [`termsData.ts`](./te
 
 ## Files
 
-| File                             | Responsibility                                                              |
-| -------------------------------- | -------------------------------------------------------------------------- |
-| [`index.tsx`](./index.tsx)       | The `Component`, the conditional logic, `meta`, and `hublDataTemplate`.     |
-| [`fields.tsx`](./fields.tsx)     | The editor `fields` (heading, intro, background color) and `FieldValues`.  |
-| [`termsData.ts`](./termsData.ts) | The section/clause copy as plain data.                                      |
+| File                             | Responsibility                                                            |
+| -------------------------------- | ------------------------------------------------------------------------- |
+| [`index.tsx`](./index.tsx)       | The `Component`, the conditional logic, `meta`, and `hublDataTemplate`.   |
+| [`fields.tsx`](./fields.tsx)     | The editor `fields` (heading, intro, background color) and `FieldValues`. |
+| [`termsData.ts`](./termsData.ts) | The section/clause copy as plain data.                                    |
 
 ## Why the clause text is hardcoded
 

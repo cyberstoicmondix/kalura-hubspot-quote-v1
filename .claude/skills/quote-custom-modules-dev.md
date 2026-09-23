@@ -42,9 +42,14 @@ Every module exports four things from `index.tsx`:
 Standard imports:
 
 ```tsx
-import { ModuleFields, TextField, FieldGroup, ColorField } from '@hubspot/cms-components/fields';
-import { Island } from '@hubspot/cms-components';
-import type { QuoteTemplateContext } from '@hubspot/quote-dev-sdk';
+import {
+  ModuleFields,
+  TextField,
+  FieldGroup,
+  ColorField,
+} from "@hubspot/cms-components/fields";
+import { Island } from "@hubspot/cms-components";
+import type { QuoteTemplateContext } from "@hubspot/quote-dev-sdk";
 ```
 
 ### Typing with `@hubspot/quote-dev-sdk`
@@ -55,8 +60,8 @@ The SDK exports `QuoteTemplateContext` and its member types (`QuoteProperties`, 
 
 ```tsx
 interface HublData {
-  quote: Pick<QuoteTemplateContext['quote'], 'hs_title' | 'hs_currency'>;
-  lineItems: QuoteTemplateContext['lineItems'];
+  quote: Pick<QuoteTemplateContext["quote"], "hs_title" | "hs_currency">;
+  lineItems: QuoteTemplateContext["lineItems"];
 }
 
 export const hublDataTemplate = `
@@ -73,11 +78,17 @@ export const hublDataTemplate = `
 Useful narrowing patterns:
 
 ```ts
-import type { QuoteTemplateContext, LineItemProperties } from '@hubspot/quote-dev-sdk';
+import type {
+  QuoteTemplateContext,
+  LineItemProperties,
+} from "@hubspot/quote-dev-sdk";
 
-type LineItemsOnly = Pick<QuoteTemplateContext, 'lineItems'>;
-type WithoutDocuments = Omit<QuoteTemplateContext, 'quoteDocuments'>;
-type BillingFields = Pick<LineItemProperties, 'name' | 'amount' | 'hs_recurring_billing_period' | 'hs_term_in_months'>;
+type LineItemsOnly = Pick<QuoteTemplateContext, "lineItems">;
+type WithoutDocuments = Omit<QuoteTemplateContext, "quoteDocuments">;
+type BillingFields = Pick<
+  LineItemProperties,
+  "name" | "amount" | "hs_recurring_billing_period" | "hs_term_in_months"
+>;
 ```
 
 ### quoteTemplateContext
@@ -125,16 +136,18 @@ Modules are server-side rendered (SSR). For client-side interactivity, use Islan
 
 ```tsx
 // @ts-expect-error -- ?island not typed
-import InteractiveComponent from './islands/MyComponent?island';
-import MyComponent from './islands/MyComponent';
+import InteractiveComponent from "./islands/MyComponent?island";
+import MyComponent from "./islands/MyComponent";
 
 // In editor: render static version
 // On published quote: render island with hydration
-{isInEditor ? (
-  <MyComponent {...props} />
-) : (
-  <Island module={InteractiveComponent} hydrateOn="load" {...props} />
-)}
+{
+  isInEditor ? (
+    <MyComponent {...props} />
+  ) : (
+    <Island module={InteractiveComponent} hydrateOn="load" {...props} />
+  );
+}
 ```
 
 **Props passed to an `<Island>` are serialized onto the DOM.** Only pass scalar values and small objects that are directly relevant to the island's rendered output. Avoid passing entire `quoteTemplateContext` slices, large arrays, or objects with fields the island doesn't use — the data ends up in the HTML payload and inflates page weight for no benefit.
@@ -150,11 +163,15 @@ Use HubL variables to detect editor/previewer context:
 
 `is_in_editor` is important because Islands cause full-page reloads in the editor. Render static fallbacks in editor mode.
 
-`isQuoteBlueprint` is `true` when the module renders inside a quote *template* rather than an individual quote. In that context, `quoteTemplateContext` contains no real data — buyer contacts, company, and line items will be empty or null. Modules should detect this and substitute sensible placeholder values so the template editor still shows a representative preview:
+`isQuoteBlueprint` is `true` when the module renders inside a quote _template_ rather than an individual quote. In that context, `quoteTemplateContext` contains no real data — buyer contacts, company, and line items will be empty or null. Modules should detect this and substitute sensible placeholder values so the template editor still shows a representative preview:
 
 ```tsx
-const companyName = hublData.isQuoteBlueprint ? 'Acme Corp' : hublData.companyName;
-const lineItems = hublData.isQuoteBlueprint ? PLACEHOLDER_LINE_ITEMS : hublData.lineItems;
+const companyName = hublData.isQuoteBlueprint
+  ? "Acme Corp"
+  : hublData.companyName;
+const lineItems = hublData.isQuoteBlueprint
+  ? PLACEHOLDER_LINE_ITEMS
+  : hublData.lineItems;
 ```
 
 ## Development Workflow
@@ -173,24 +190,32 @@ The user provides a screenshot of the target design. Build **both** `preview/ind
 6. **Iterate** — user reviews preview, requests tweaks, update both files
 
 #### Preview HTML template:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-</head>
-<body>
-  <div id="root"></div>
-  <script type="text/babel">
-    const MOCK_DATA = { /* ... */ };
-    // Components here — same structure as the TSX module
-    function App() { /* ... */ }
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
-</body>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const MOCK_DATA = {
+        /* ... */
+      };
+      // Components here — same structure as the TSX module
+      function App() {
+        /* ... */
+      }
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
 </html>
 ```
 
@@ -217,6 +242,7 @@ The `.claude/launch.json` should be configured to serve the preview directory:
 ```
 
 If Claude Preview tools are available, use them to iterate visually:
+
 - `mcp__Claude_Preview__preview_start` — Start the preview server
 - `mcp__Claude_Preview__preview_screenshot` — Capture the current state
 - `mcp__Claude_Preview__preview_resize` — Test responsive layouts (desktop, tablet, mobile)
@@ -224,9 +250,11 @@ If Claude Preview tools are available, use them to iterate visually:
 - `mcp__Claude_Preview__preview_snapshot` — Get accessibility tree for text verification
 
 If Claude Preview tools are NOT available, start the server manually:
+
 ```bash
 python3 -m http.server 3456 -d preview &
 ```
+
 Then tell the user to open http://localhost:3456 in their browser.
 
 The `preview/index.html` is a scratch file — it gets overwritten for whichever module is actively being worked on.
@@ -263,6 +291,7 @@ function useContainerWidth() {
 ```
 
 Pass `compact` (e.g., `width < 700`) to all sub-components and adjust:
+
 - 2-col grids → 1-col
 - 4-col grids → 2-col
 - Tables → horizontal scroll with `overflowX: 'auto'`

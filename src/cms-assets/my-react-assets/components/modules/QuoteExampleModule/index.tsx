@@ -1,9 +1,14 @@
-import { ModuleFields, TextField, FieldGroup, ColorField } from '@hubspot/cms-components/fields';
-import { Island } from '@hubspot/cms-components';
-import type { QuoteTemplateContext } from '@hubspot/quote-dev-sdk';
+import {
+  ModuleFields,
+  TextField,
+  FieldGroup,
+  ColorField,
+} from "@hubspot/cms-components/fields";
+import { Island } from "@hubspot/cms-components";
+import type { QuoteTemplateContext } from "@hubspot/quote-dev-sdk";
 // @ts-expect-error -- ?island not typed
-import InteractiveButton from './islands/InteractiveButton?island';
-import InteractiveButtonComponent from './islands/InteractiveButton';
+import InteractiveButton from "./islands/InteractiveButton?island";
+import InteractiveButtonComponent from "./islands/InteractiveButton";
 
 interface FieldValues {
   heading: string;
@@ -15,7 +20,7 @@ interface FieldValues {
 }
 
 interface HublData {
-  quoteTitle?: QuoteTemplateContext['quote']['hs_title'];
+  quoteTitle?: QuoteTemplateContext["quote"]["hs_title"];
   isQuoteBlueprint: boolean;
   isInEditor: boolean;
   companyName?: string;
@@ -36,18 +41,20 @@ export function Component({ fieldValues, hublData }: Props) {
     isInEditor,
   } = hublData;
 
-  const companyName = isQuoteBlueprint ? 'HubSpot' : rawCompanyName;
-  const companyDomain = isQuoteBlueprint ? 'hubspot.com' : rawCompanyDomain;
+  const companyName = isQuoteBlueprint ? "HubSpot" : rawCompanyName;
+  const companyDomain = isQuoteBlueprint ? "hubspot.com" : rawCompanyDomain;
 
   return (
     <div
       style={{
         backgroundColor: fieldValues.styles?.backgroundColor?.css,
-        padding: 'calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4)',
+        padding: "calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4)",
       }}
     >
-      <h1 style={{ color: fieldValues.styles?.headingColor?.css }}>{fieldValues.heading}</h1>
-      <p>Quote: {quoteTitle || 'Sample quote name'}</p>
+      <h1 style={{ color: fieldValues.styles?.headingColor?.css }}>
+        {fieldValues.heading}
+      </h1>
+      <p>Quote: {quoteTitle || "Sample quote name"}</p>
       {companyName ? (
         <p>
           Company: {companyName}
@@ -59,12 +66,16 @@ export function Component({ fieldValues, hublData }: Props) {
       {isInEditor ? (
         <>
           <InteractiveButtonComponent buttonLabel={fieldValues.buttonLabel} />
-          <p style={{ fontStyle: 'italic', opacity: 0.7 }}>
+          <p style={{ fontStyle: "italic", opacity: 0.7 }}>
             This button will not be interactive until the quote is published.
           </p>
         </>
       ) : (
-        <Island module={InteractiveButton} hydrateOn="load" buttonLabel={fieldValues.buttonLabel} />
+        <Island
+          module={InteractiveButton}
+          hydrateOn="load"
+          buttonLabel={fieldValues.buttonLabel}
+        />
       )}
     </div>
   );
@@ -82,8 +93,8 @@ export const fields = (
 );
 
 export const meta = {
-  label: 'Quote Example Module',
-  content_types: ['QUOTE', 'QUOTE_BLUEPRINT'],
+  label: "Quote Example Module",
+  content_types: ["QUOTE", "QUOTE_BLUEPRINT"],
 };
 
 export const hublDataTemplate = `

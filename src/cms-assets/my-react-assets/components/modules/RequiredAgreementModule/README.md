@@ -15,12 +15,12 @@ The module also shows how to handle the `loading` and `error` states from the ho
 
 ## Files
 
-| File | Responsibility |
-| --- | --- |
-| [`index.tsx`](./index.tsx) | The `Component`, editor detection via `useEditorVariableChecks`, Island hydration, and `meta`. |
-| [`fields.tsx`](./fields.tsx) | The editor `fields` (heading, terms rich text, disabled reason) and `FieldValues` type. |
+| File                                                           | Responsibility                                                                                                     |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [`index.tsx`](./index.tsx)                                     | The `Component`, editor detection via `useEditorVariableChecks`, Island hydration, and `meta`.                     |
+| [`fields.tsx`](./fields.tsx)                                   | The editor `fields` (heading, terms rich text, disabled reason) and `FieldValues` type.                            |
 | [`islands/TermsAcceptance.tsx`](./islands/TermsAcceptance.tsx) | The client-side island: calls `useQuoteAcceptance`, renders the terms and checkbox, toggles acceptance enablement. |
-| [`TermsAcceptance.module.css`](./TermsAcceptance.module.css) | Scoped styles using cpq-theme CSS custom properties. |
+| [`TermsAcceptance.module.css`](./TermsAcceptance.module.css)   | Scoped styles using cpq-theme CSS custom properties.                                                               |
 
 ## How controlling acceptance enablement works
 

@@ -1,10 +1,10 @@
-import { Island, useEditorVariableChecks } from '@hubspot/cms-components';
+import { Island, useEditorVariableChecks } from "@hubspot/cms-components";
 // @ts-expect-error -- ?island not typed
-import TermsAcceptanceIsland from './islands/TermsAcceptance?island';
-import TermsAcceptance from './islands/TermsAcceptance';
-import type { FieldValues } from './fields';
+import TermsAcceptanceIsland from "./islands/TermsAcceptance?island";
+import TermsAcceptance from "./islands/TermsAcceptance";
+import type { FieldValues } from "./fields";
 
-export { fields } from './fields';
+export { fields } from "./fields";
 
 interface Props {
   fieldValues: FieldValues;
@@ -28,6 +28,6 @@ export function Component({ fieldValues }: Props) {
 }
 
 export const meta = {
-  label: 'Required Agreement',
-  content_types: ['QUOTE', 'QUOTE_BLUEPRINT'],
+  label: "Required Agreement",
+  content_types: ["QUOTE", "QUOTE_BLUEPRINT"],
 };

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { RichTextFieldWrapper } from '@hubspot/cms-components';
-import { useQuoteAcceptance } from '@hubspot/quote-dev-sdk';
-import styles from '../TermsAcceptance.module.css';
+import { useEffect, useState } from "react";
+import { RichTextFieldWrapper } from "@hubspot/cms-components";
+import { useQuoteAcceptance } from "@hubspot/quote-dev-sdk";
+import styles from "../TermsAcceptance.module.css";
 
 export default function TermsAcceptance({
   heading,
@@ -59,7 +59,11 @@ export default function TermsAcceptance({
 
       {isReady && (
         <>
-          <RichTextFieldWrapper tag="div" fieldValue={termsText} className={styles.terms} />
+          <RichTextFieldWrapper
+            tag="div"
+            fieldValue={termsText}
+            className={styles.terms}
+          />
 
           <label className={styles.checkboxLabel}>
             <input

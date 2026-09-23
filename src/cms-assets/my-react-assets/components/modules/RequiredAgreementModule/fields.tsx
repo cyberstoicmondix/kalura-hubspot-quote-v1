@@ -1,4 +1,8 @@
-import { ModuleFields, TextField, RichTextField } from '@hubspot/cms-components/fields';
+import {
+  ModuleFields,
+  TextField,
+  RichTextField,
+} from "@hubspot/cms-components/fields";
 
 export interface FieldValues {
   heading: string;
@@ -8,11 +12,7 @@ export interface FieldValues {
 
 export const fields = (
   <ModuleFields>
-    <TextField
-      name="heading"
-      label="Heading"
-      default="Terms & Conditions"
-    />
+    <TextField name="heading" label="Heading" default="Terms & Conditions" />
     <RichTextField
       name="termsText"
       label="Terms and Conditions"

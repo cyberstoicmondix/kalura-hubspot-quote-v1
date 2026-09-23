@@ -4,7 +4,7 @@ import {
   RichTextField,
   FieldGroup,
   ColorField,
-} from '@hubspot/cms-components/fields';
+} from "@hubspot/cms-components/fields";
 
 export interface FieldValues {
   heading: string;
