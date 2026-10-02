@@ -1423,12 +1423,13 @@ export default function ServiceAgreement({
 
       <BulletList>
         <li>
-          the Participant cancels a support delivered by a disability support
-          worker with less than seven (7) days’ notice;
+          the Participant cancels a support delivered by a Disability Support
+          Worker with less than seven (7) days’ notice;
         </li>
         <li>
-          the Participant cancels any other support with less than two (2) clear
-          Business Days’ notice; or
+	  the Participant cancels a scheduled support that is not delivered by 
+          a Disability Support Worker, including therapy services, with less 
+          than two (2) clear Business Days' notice; or
         </li>
         <li>
           the Participant does not attend a scheduled support within a
