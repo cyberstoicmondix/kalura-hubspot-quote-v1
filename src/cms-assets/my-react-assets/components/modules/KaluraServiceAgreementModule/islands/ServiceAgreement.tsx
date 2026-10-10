@@ -2729,12 +2729,11 @@ export default function ServiceAgreement({
               </tr>
 
               <tr>
-                <th>Date</th>
+                <th>Email</th>
                 <td>
                   <TextInput
                     value={participantSigningDate}
                     onChange={setParticipantSigningDate}
-                    placeholder="DD/MM/YYYY"
                   />
                 </td>
               </tr>
@@ -2758,12 +2757,11 @@ export default function ServiceAgreement({
               </tr>
 
               <tr>
-                <th>Date</th>
+                <th>Email</th>
                 <td>
                   <TextInput
                     value={representativeDate}
                     onChange={setRepresentativeDate}
-                    placeholder="DD/MM/YYYY"
                   />
                 </td>
               </tr>
