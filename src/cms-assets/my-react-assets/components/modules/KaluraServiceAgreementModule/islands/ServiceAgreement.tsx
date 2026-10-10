@@ -17,10 +17,11 @@ interface YesNoProps {
   name: string;
   label: string;
   value: "yes" | "no" | "";
-  onChange: (value: "yes" | "no") => void;
+  onChange: (value: "yes" | "no" | "") => void;
+  allowUntick?: boolean;
 }
 
-function YesNo({ name, label, value, onChange }: YesNoProps) {
+function YesNo({ name, label, value, onChange, allowUntick = false }: YesNoProps) {
   return (
     <div className={styles.consentRow}>
       <div className={styles.consentQuestion}>{label}</div>
@@ -30,6 +31,12 @@ function YesNo({ name, label, value, onChange }: YesNoProps) {
           type="radio"
           name={name}
           checked={value === "yes"}
+          onClick={(event) => {
+            if (allowUntick && value === "yes") {
+              event.preventDefault();
+              onChange("");
+            }
+          }}
           onChange={() => onChange("yes")}
         />
         <span>Yes</span>
@@ -40,6 +47,12 @@ function YesNo({ name, label, value, onChange }: YesNoProps) {
           type="radio"
           name={name}
           checked={value === "no"}
+          onClick={(event) => {
+            if (allowUntick && value === "no") {
+              event.preventDefault();
+              onChange("");
+            }
+          }}
           onChange={() => onChange("no")}
         />
         <span>No</span>
@@ -2204,9 +2217,9 @@ export default function ServiceAgreement({
             label="Non-face-to-face supports (see Claiming for Non-Face-to-Face Supports)"
             value={claimNonFace}
             onChange={setClaimNonFace}
-	    allowUntick
+            allowUntick
           />
- 
+
           <YesNo
             name="claimTravelLabour"
             label="Provider travel: labour time (see Claiming for Provider Travel)"
@@ -2220,7 +2233,7 @@ export default function ServiceAgreement({
             label="Provider travel: non-labour costs, including any agreed contribution per kilometre (see Claiming for Provider Travel)"
             value={claimTravelNonLabour}
             onChange={setClaimTravelNonLabour}
- 	    allowUntick
+            allowUntick
           />
 
           <YesNo
@@ -2228,7 +2241,7 @@ export default function ServiceAgreement({
             label="Short Notice Cancellation terms (see Short Notice Cancellations)"
             value={claimCancellation}
             onChange={setClaimCancellation}
-	    allowUntick
+            allowUntick
           />
 
           <YesNo
@@ -2236,7 +2249,7 @@ export default function ServiceAgreement({
             label="NDIA Requested Reports (see NDIA Requested Reports)"
             value={claimReports}
             onChange={setClaimReports}
-	    allowUntick
+            allowUntick
           />
         </div>
 
