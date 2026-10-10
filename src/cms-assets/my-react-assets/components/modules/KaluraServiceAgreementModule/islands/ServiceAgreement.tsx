@@ -2204,13 +2204,15 @@ export default function ServiceAgreement({
             label="Non-face-to-face supports (see Claiming for Non-Face-to-Face Supports)"
             value={claimNonFace}
             onChange={setClaimNonFace}
+	    allowUntick
           />
-
+ 
           <YesNo
             name="claimTravelLabour"
             label="Provider travel: labour time (see Claiming for Provider Travel)"
             value={claimTravelLabour}
             onChange={setClaimTravelLabour}
+            allowUntick
           />
 
           <YesNo
@@ -2218,6 +2220,7 @@ export default function ServiceAgreement({
             label="Provider travel: non-labour costs, including any agreed contribution per kilometre (see Claiming for Provider Travel)"
             value={claimTravelNonLabour}
             onChange={setClaimTravelNonLabour}
+ 	    allowUntick
           />
 
           <YesNo
@@ -2225,6 +2228,7 @@ export default function ServiceAgreement({
             label="Short Notice Cancellation terms (see Short Notice Cancellations)"
             value={claimCancellation}
             onChange={setClaimCancellation}
+	    allowUntick
           />
 
           <YesNo
@@ -2232,6 +2236,7 @@ export default function ServiceAgreement({
             label="NDIA Requested Reports (see NDIA Requested Reports)"
             value={claimReports}
             onChange={setClaimReports}
+	    allowUntick
           />
         </div>
 
